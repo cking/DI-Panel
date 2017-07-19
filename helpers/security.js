@@ -28,7 +28,6 @@ class Security {
     }
 
     async setToken(user, token, salt) {
-        console.log(salt);
         token = this.generateHash(token, salt);
 
         try {

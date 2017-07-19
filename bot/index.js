@@ -31,7 +31,6 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', async msg => {
-    console.log('message');
     if (!msg.author.bot && (!msg.channel.guild ||
         (global.config.bot.channels.includes(msg.channel.id)
             && msg.content.toLowerCase() === global.config.bot.command))) {
