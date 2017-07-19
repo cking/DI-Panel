@@ -6,6 +6,7 @@
   "author": "stupid cat",
   "license": "MIT",
   "dependencies": {
+    "eris": "^0.7.0",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "express-vue": "^3.15.1",

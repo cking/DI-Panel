@@ -81,3 +81,5 @@ const port = 8099;
 app.listen(port, () => {
     console.log('App listening on port', port);
 });
+
+require('./bot');
