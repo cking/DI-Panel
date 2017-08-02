@@ -13,8 +13,16 @@ class WebsocketServer {
     async newConnection(ws, req) {
         let { userid, auth } = req.headers;
         console.log('New connection from', userid);
-        if (await global.helpers.Security.verifyLogin(userid, auth))
+        if (await global.helpers.Security.verifyLogin(userid, auth)) {
+            let interval = setInterval(_ => {
+                let time = Date.now();
+                ws.send(JSON.stringify({ code: 'ping', time }));
+            }, 30000);
             ws.on('message', msg => this.onMessage(ws, msg, userid));
+            ws.on('close', _ => {
+                clearInterval(interval);
+            });
+        }
         else ws.close(4001, 'Invalid login credentials.');
     }
 
