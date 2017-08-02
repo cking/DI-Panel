@@ -4,7 +4,7 @@ const moment = require('moment');
 
 class WebsocketServer {
     constructor(server) {
-        this.wss = new Websocket.Server({ server: server, path: '/ws' });
+        this.wss = new Websocket.Server({ port: 8443, path: '/ws' });
         this.wss.on('connection', this.newConnection.bind(this));
         this.wsMap = {};
     }
