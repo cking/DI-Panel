@@ -1,11 +1,13 @@
 const express = require('express');
 const expressVue = require('express-vue');
+const http = require('http');
 const path = require('path');
 global.config = require('./config.json');
 const { Client, Pool } = require('pg');
 global.pg_pool = new Pool(config.db);
 global.helpers = require('./helpers');
 global.userMap = {};
+const WebsocketServer = require('./backend/websocket');
 
 const Strategy = require('passport-discord').Strategy;
 const passport = require('passport');
@@ -77,8 +79,12 @@ app.get('/callback', passport.authenticate('discord', {
     res.redirect('/');
 });
 
+const server = http.createServer(app);
+const websocketServer = new WebsocketServer(server);
+
+
 const port = 8099;
-app.listen(port, () => {
+server.listen(port, () => {
     console.log('App listening on port', port);
 });
 

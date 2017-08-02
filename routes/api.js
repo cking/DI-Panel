@@ -1,3 +1,4 @@
+const Websocket = require('ws');
 const router = require('express').Router();
 
 const errors = {
@@ -8,8 +9,13 @@ router.get('/', (req, res, next) => {
     res.send('<img src="https://img.buzzfeed.com/buzzfeed-static/static/2014-05/30/9/enhanced/webdr02/anigif_enhanced-buzz-4865-1401455777-27.gif" class="full"/> <style>* { height: 100%; width: 100%; margin: 0; padding: 0; }</style>');
 });
 
-router.get('/settings/:userid/:plugin', async (req, res, next) => {
+router.get('/settings/:userid/:key', async (req, res, next) => {
     if (!await authenticate(req, res)) return;
+});
+
+router.put('/settings/:userid/:key', async (req, res, next) => {
+    if (!await authenticate(req, res)) return;
+
 });
 
 async function authenticate(req, res) {
