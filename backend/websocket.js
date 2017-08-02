@@ -1,16 +1,18 @@
 const Websocket = require('ws');
 const http = require('http');
 const moment = require('moment');
+const expressWs = require('express-ws');
 
 class WebsocketServer {
-    constructor(server) {
-        this.wss = new Websocket.Server({ server: server, path: '/ws' });
-        this.wss.on('connection', this.newConnection.bind(this));
+    constructor(app) {
+        expressWs(app);
+        app.ws('/ws', this.newConnection.bind(this));
         this.wsMap = {};
     }
 
     async newConnection(ws, req) {
         let { userid, auth } = req.headers;
+        console.log('New connection from', userid);
         if (await global.helpers.Security.verifyLogin(userid, auth))
             ws.on('message', msg => this.onMessage(ws, msg, userid));
         else ws.close(4001, 'Invalid login credentials.');

@@ -79,12 +79,11 @@ app.get('/callback', passport.authenticate('discord', {
     res.redirect('/');
 });
 
-const server = http.createServer(app);
-const websocketServer = new WebsocketServer(server);
+const websocketServer = new WebsocketServer(app);
 
 
 const port = 8099;
-server.listen(port, () => {
+app.listen(port, () => {
     console.log('App listening on port', port);
 });
 
