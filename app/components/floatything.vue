@@ -102,7 +102,7 @@ export default {
 }
 
 .circle.bubble2 {
-    background: url(https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png);
+    background: url(/img/github.svg);
     left: calc(73% - 3vmax);
     top: calc(67% - 3vmax);
     animation-duration: 0.7s;
@@ -112,7 +112,7 @@ export default {
 }
 
 .circle.bubble3 {
-    background: url(https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png);
+    background: url(/img/plugin.svg);
     left: calc(28% - 5vmax);
     top: calc(58% - 5vmax);
     animation-duration: 0.8s;
@@ -122,7 +122,7 @@ export default {
 }
 
 .circle.bubble4 {
-    background: url(https://cdn.discordapp.com/icons/257299803397029899/64e14b2d61fb592c2657eb72a1e71040.png?size=512);
+    background: url(/img/dtinker.svg);
     left: calc(32% - 3vmax);
     top: calc(23% - 3vmax);
     animation-duration: 0.5s;
