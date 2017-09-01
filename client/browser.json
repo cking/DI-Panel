@@ -1,0 +1,6 @@
+{
+    "dependencies": [
+        "./client.css",
+        "require: ./components/app/index.marko"
+    ]
+}

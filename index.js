@@ -24,6 +24,11 @@ const Koa = require('koa')
 const mount = require('koa-mount')
 const app = new Koa()
 
+require('lasso').configure({ plugins: [ "lasso-marko" ]})
+// TODO: lasso-img etc
+// https://github.com/austinkelleher/lasso-optimize-iife
+// https://github.com/austinkelleher/lasso-prepack
+app.use(require('lasso/middleware/koa').serveStatic())
 app.use(require('koa-static')(path.join(__dirname, 'public')))
 
 /*
